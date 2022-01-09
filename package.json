@@ -1,0 +1,29 @@
+{
+  "name": "blog-ssr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GokhanTurgut/blog-ssr.git"
+  },
+  "author": "Gokhan Turgut",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GokhanTurgut/blog-ssr/issues"
+  },
+  "homepage": "https://github.com/GokhanTurgut/blog-ssr#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
