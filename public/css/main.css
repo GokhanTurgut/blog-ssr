@@ -60,3 +60,18 @@ footer {
 .footer--githubLink:visited {
   color: #f45d48;
 }
+
+.btn {
+  background-color: #f45d48;
+  border: none;
+  padding: .5rem 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3rem;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: #e97b6c;
+}
