@@ -8,12 +8,26 @@
           </li>
         </div>
         <div>
+          <% if (isLoggedIn) { %>
           <li>
-            <a href="./login" class="nav--list__linkAuth">Login</a>
+            <a href="./addPost" class="nav--list__linkNav">Add Post</a>
           </li>
           <li>
-            <a href="./signup" class="nav--list__linkAuth">Sign up</a>
+            <a href="./myPosts" class="nav--list__linkNav">My Posts</a>
           </li>
+          <li>
+            <form action="/logout" method="post">
+              <button class="nav--list__linkLogout" type="submit">Logout</button>
+            </form>
+          </li>
+          <% } else { %>
+          <li>
+            <a href="./login" class="nav--list__linkNav">Login</a>
+          </li>
+          <li>
+            <a href="./signup" class="nav--list__linkNav">Sign up</a>
+          </li>
+          <% } %>
         </div>
       </ul>
     </nav>
