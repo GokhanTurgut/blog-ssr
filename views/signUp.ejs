@@ -12,6 +12,7 @@
               type="text" 
               name="name" 
               id="name"
+              value="<%= oldInput.name %>"
               required
           >
         </div>
@@ -21,6 +22,7 @@
               type="text" 
               name="surname" 
               id="surname"
+              value="<%= oldInput.surname %>"
               required
           >
         </div>
@@ -30,6 +32,7 @@
               type="text" 
               name="username" 
               id="username"
+              value="<%= oldInput.username %>"
               required
           >
         </div>
@@ -39,6 +42,7 @@
               type="email" 
               name="email" 
               id="email"
+              value="<%= oldInput.email %>"
               required
           >
         </div>
@@ -47,7 +51,9 @@
           <input 
               type="password" 
               name="password" 
-              id="password" 
+              id="password"
+              minlength="6"
+              value="<%= oldInput.password %>"
               required
           >
         </div>
@@ -57,6 +63,8 @@
               type="password" 
               name="confirmPassword" 
               id="confirmPassword"
+              minlength="6"
+              value="<%= oldInput.confirmPassword %>"
               required
           >
         </div>

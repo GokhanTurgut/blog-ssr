@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
 import { get404 } from "./controllers/error.js";
 import blogRoutes from "./routes/blog.js";
@@ -16,6 +17,7 @@ app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(new URL("public", import.meta.url).pathname));
+app.use(cookieParser());
 
 app.use(blogRoutes);
 app.use(authRoutes);

@@ -16,26 +16,26 @@ router.post(
     check("username")
       .trim()
       .isAlphanumeric()
-      .custom((value, { req }) => {
-        return User.findOne({ username: value }).then((user) => {
+      .custom((value, { req }) =>
+        User.findOne({ username: value }).then((user) => {
           if (user) {
             throw new Error("Username already exists!");
           }
           return true;
-        });
-      }),
+        })
+      ),
     check("email")
       .isEmail()
       .withMessage("Email is not valid!")
       .normalizeEmail()
-      .custom((value, { req }) => {
-        return User.findOne({ email: value }).then((user) => {
+      .custom((value, { req }) =>
+        User.findOne({ email: value }).then((user) => {
           if (user) {
             throw new Error("Email already exists!");
           }
           return true;
-        });
-      }),
+        })
+      ),
     check("password")
       .isLength({ min: 6 })
       .withMessage(
@@ -55,6 +55,19 @@ router.post(
   authController.postSignUp
 );
 
-router.post("/login", authController.postLogin);
+router.post(
+  "/login",
+  [
+    check("username").trim().isAlphanumeric(),
+    check("password")
+      .isLength({ min: 6 })
+      .withMessage(
+        "Password must contain numbers and letters and must be at least 6 characters long."
+      )
+      .isAlphanumeric()
+      .trim(),
+  ],
+  authController.postLogin
+);
 
 export default router;
