@@ -23,7 +23,14 @@ function getSignUp(req, res, next) {
 }
 
 function getLogin(req, res, next) {
-  res.render("auth/login", { pageTitle: "Login", errorMessage: null });
+  res.render("auth/login", {
+    pageTitle: "Login",
+    errorMessage: null,
+    oldInput: {
+      username: null,
+      password: null,
+    }
+  });
 }
 
 async function postSignUp(req, res, next) {
@@ -60,7 +67,7 @@ async function postSignUp(req, res, next) {
       password: hashedPassword,
     });
     const result = await user.save();
-    res.redirect("auth/login");
+    res.redirect("/login");
   } catch (err) {
     const error = new Error(err);
     error.statusCode = 500;

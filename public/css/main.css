@@ -96,3 +96,45 @@ footer {
 .btn:active {
   background-color: #e97b6c;
 }
+
+.btn--edit {
+  background-color: #eeb438;
+  border: none;
+  padding: .5rem 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3rem;
+}
+
+.btn--edit:hover,
+.btn--edit:active {
+  background-color: #f8ca67;
+}
+
+.btn--delete {
+  background-color: #831414;
+  border: none;
+  padding: .5rem 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3rem;
+}
+
+.btn--delete:hover,
+.btn--delete:active {
+  background-color: #a11818;
+  border: none;
+  padding: .5rem 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3rem;
+}
+
+.message-error {
+  color: #f45d48;
+  font-size: 1.3rem;
+  font-weight: bold;
+}

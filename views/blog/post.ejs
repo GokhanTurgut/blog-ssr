@@ -1,0 +1,12 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/post.css">
+</head>
+<%- include('../includes/navigation.ejs') %>
+  <main>
+      <div class="post--container">
+        <h1><%= post.title %></h1>
+        <h4><%= post.description %></h4>
+        <p><%= post.content %></p>
+      </div>
+  </main>
+<%- include('../includes/footer.ejs') %>

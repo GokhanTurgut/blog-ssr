@@ -9,7 +9,7 @@ export function checkAuth(req, res, next) {
     return res.redirect("/");
   }
   try {
-    decodedToken = jwt.verify(token, process.env.PRIVATE_KEY);
+    const decodedToken = jwt.verify(token, process.env.PRIVATE_KEY);
     if (!decodedToken) {
       return res.redirect("/");
     }

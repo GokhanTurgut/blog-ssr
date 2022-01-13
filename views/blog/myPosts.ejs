@@ -1,0 +1,31 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/myPosts.css">
+</head>
+<%- include('../includes/navigation.ejs') %>
+  <main>
+      <h1 class="main--header">My Posts</h1>
+      <div class="posts--container">
+        <% if (!posts.length) { %>
+          <h2>You don't have any posts yet!</h2>
+        <% } else { %>
+          <% posts.forEach(post => { %>
+            <div class="post--card">
+              <h3><%= post.title %></h3>
+              <p><%= post.description %></p>
+              <small>Posted at <%= post.createdAt.toLocaleDateString() %></small>
+              <div class="post--card__actions">
+                <form action="/post/<%= post._id.toString()%>" method="GET">
+                  <button class="btn" type="submit">Read</button>
+                </form>
+                <form action="/post/edit/<%= post._id.toString()%>" method="GET">
+                  <button class="btn--edit" type="submit">Edit</button>
+                </form>
+                <form action="/post/delete/<%= post._id.toString()%>" method="POST">
+                  <button class="btn--delete" type="submit">Delete</button>
+                </form>
+              </div>
+            </div>
+          <% })} %>
+      </div>
+  </main>
+<%- include('../includes/footer.ejs') %>

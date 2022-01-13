@@ -1,0 +1,28 @@
+.main--header {
+  text-align: center;
+}
+
+.posts--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.post--card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background-color: #252525;
+  padding: 1rem;
+  border-radius: 1rem;
+  color: white;
+  width: 80%;
+}
+
+.post--card__actions {
+  display: flex;
+  gap: .5rem;
+}

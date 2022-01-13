@@ -8,6 +8,10 @@ const postSchema = new Schema(
       type: String,
       required: true,
     },
+    description: {
+      type: String,
+      required: true,
+    },
     content: {
       type: String,
       required: true,
@@ -16,8 +20,13 @@ const postSchema = new Schema(
       type: String,
       required: true,
     },
+    creatorId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    }
   },
-  { timestamp: true }
+  { timestamps: true }
 );
 
 const post = mongoose.model("Post", postSchema);
