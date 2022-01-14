@@ -9,7 +9,8 @@ main {
 }
 
 .form {
-  width: 70%;
+  max-width: 70%;
+  width: 55rem;
   padding: 1rem;
   margin-bottom: 1rem;
 }

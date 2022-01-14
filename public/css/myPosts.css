@@ -19,7 +19,8 @@
   padding: 1rem;
   border-radius: 1rem;
   color: white;
-  width: 80%;
+  max-width: 70%;
+  width: 55rem;
 }
 
 .post--card > p {

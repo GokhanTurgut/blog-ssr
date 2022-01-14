@@ -40,3 +40,11 @@ main {
 .markdown--container > h3 {
   color: #f45d48;
 }
+
+.markdown--container img {
+  max-width: 100%;
+}
+
+.markdown--container code {
+  /* background-color: black; */
+}
