@@ -10,7 +10,7 @@ import blogRoutes from "./routes/blog.js";
 import authRoutes from "./routes/auth.js";
 import { checkUser } from "./middleware/checkAuth.js";
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
@@ -33,6 +33,10 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: store,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 2,
+      httpOnly: true,
+    },
   })
 );
 

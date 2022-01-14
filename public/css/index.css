@@ -6,7 +6,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
 }
 
 .post--card {
@@ -18,4 +20,30 @@
   padding: 1rem;
   border-radius: 1rem;
   color: white;
+}
+
+.post--card > h3 {
+  color: #f45d48;
+  font-size: 1.1rem;
+}
+
+.post--card > p {
+  font-size: 1rem;
+}
+
+.post--card > small {
+  font-size: .8rem;
+}
+
+.post--image__container {
+  overflow: hidden;
+  width: 20rem;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post--image__container > img {
+  width: 20rem;
 }

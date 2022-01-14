@@ -24,7 +24,7 @@ export function checkAuth(req, res, next) {
 }
 
 export function checkUser(req, res, next) {
-  if (req.session.user) {
+  if (req.session.user && req.session.browser === req.headers["user-agent"]) {
     res.locals.isLoggedIn = true;
   } else {
     res.locals.isLoggedIn = false;

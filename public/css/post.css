@@ -1,0 +1,42 @@
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.post--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #252525;
+  max-width: 70%;
+  width: 55rem;
+  padding: 2rem;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.post--image__container {
+  overflow: hidden;
+  width: 25rem;
+  height: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post--image__container > img {
+  width: 30rem;
+}
+
+.markdown--container {
+  width: 100%;
+}
+
+.markdown--container > h1,
+.markdown--container > h2,
+.markdown--container > h3 {
+  color: #f45d48;
+}

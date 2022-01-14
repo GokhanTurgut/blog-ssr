@@ -16,15 +16,22 @@ const postSchema = new Schema(
       type: String,
       required: true,
     },
+    sanitizedContent: {
+      type: String,
+      required: true,
+    },
+    imageURL: {
+      type: String,
+    },
     creator: {
       type: String,
       required: true,
     },
     creatorId: {
       type: Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
       required: true,
-    }
+    },
   },
   { timestamps: true }
 );

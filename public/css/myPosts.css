@@ -22,6 +22,11 @@
   width: 80%;
 }
 
+.post--card > p {
+  flex: 1;
+  margin-left: 1rem;
+}
+
 .post--card__actions {
   display: flex;
   gap: .5rem;

@@ -1,6 +1,11 @@
+import { marked } from "marked";
+import DOMPurifyCreator from "dompurify";
+import { JSDOM } from "jsdom";
 import { validationResult } from "express-validator";
 
 import Post from "../models/post.js";
+
+const DOMPurify = DOMPurifyCreator(new JSDOM().window);
 
 async function getIndex(req, res) {
   try {
@@ -39,6 +44,7 @@ function getAddPost(req, res) {
     errorMessage: null,
     oldInput: {
       title: null,
+      imageURL: null,
       description: null,
       content: null,
     },
@@ -64,7 +70,6 @@ async function getEditPostById(req, res) {
   const postId = req.params.postId;
   try {
     const post = await Post.findById(postId);
-    console.log(post);
     res.render("blog/editPost", {
       pageTitle: "Edit Post",
       post: post,
@@ -79,6 +84,7 @@ async function getEditPostById(req, res) {
 
 async function postAddPost(req, res) {
   const title = req.body.title;
+  let imageURL = req.body.imageURL;
   const description = req.body.description;
   const content = req.body.content;
 
@@ -89,23 +95,32 @@ async function postAddPost(req, res) {
       errorMessage: errors.array()[0].msg,
       oldInput: {
         title: title,
+        imageURL: imageURL,
         description: description,
         content: content,
       },
     });
   }
 
+  if (!imageURL) {
+    imageURL = "images/default-photo.webp";
+  }
+
+  const sanitizedContent = DOMPurify.sanitize(marked(content));
+
   const post = new Post({
     title: title,
+    imageURL: imageURL,
     description: description,
     content: content,
+    sanitizedContent: sanitizedContent,
     creator: req.username,
     creatorId: req.userId,
   });
 
   try {
     const result = await post.save();
-    res.redirect("/");
+    res.redirect(`/post/${post._id}`);
   } catch (err) {
     const error = new Error(err);
     error.statusCode = 500;
@@ -127,11 +142,12 @@ async function postDeletePostById(req, res) {
 
 async function postEditPostById(req, res) {
   const title = req.body.title;
+  let imageURL = req.body.imageURL;
   const description = req.body.description;
   const content = req.body.content;
   const postId = req.params.postId;
 
-  const oldPost = { title, description, content, _id: postId };
+  const oldPost = { title, imageURL, description, content, _id: postId };
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -142,14 +158,22 @@ async function postEditPostById(req, res) {
     });
   }
 
+  if (!imageURL) {
+    imageURL = "images/default-photo.webp";
+  }
+
+  const sanitizedContent = DOMPurify.sanitize(marked(content));
+
   try {
     const post = await Post.findById(postId);
     if (post.creatorId.toString() !== req.userId.toString()) {
       return res.redirect("/");
     }
     post.title = title;
+    post.imageURL = imageURL;
     post.description = description;
     post.content = content;
+    post.sanitizedContent = sanitizedContent;
     await post.save();
     res.redirect("/myPosts");
   } catch (err) {

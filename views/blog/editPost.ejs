@@ -17,6 +17,15 @@
           >
         </div>
         <div class="form-control">
+          <label for="imageURL">Image Url (Not Required)</label>
+          <input 
+              type="text" 
+              name="imageURL" 
+              id="imageURL"
+              value="<%= post.imageURL %>"
+          >
+        </div>
+        <div class="form-control">
           <label for="description">Description</label>
           <input 
               type="text" 
@@ -27,7 +36,7 @@
           >
         </div>
         <div class="form-control">
-          <label for="content">Content</label>
+          <label for="content">Content (Markdown Supported)</label>
           <textarea 
               name="content" 
               id="content"
